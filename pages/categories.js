@@ -1,7 +1,16 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
+import { getAllCategories } from "../src/services/categoriesService";
 
-export default function Categories() {
+export function getStaticProps() {
+  const categories = getAllCategories();
+
+  return {
+    props: { categories },
+  };
+}
+
+export default function Categories({ categories }) {
   return (
     <>
       <Head>
@@ -10,16 +19,13 @@ export default function Categories() {
       <h1>Kategorien</h1>
       <p>Liste aller Kategorien</p>
       <ul>
-        <li>
-          <Link href="/category/meerwasser">
-            <a>Meerwasser</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/category/muscheln">
-            <a>Muscheln</a>
-          </Link>
-        </li>
+        {categories.map((category) => (
+          <li key={category.id}>
+            <Link href={`/category/${category.id}`}>
+              <a>{category.name}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </>
   );

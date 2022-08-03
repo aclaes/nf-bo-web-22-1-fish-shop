@@ -1,7 +1,16 @@
-import Head from 'next/head';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
+import { getAllProducts } from "../src/services/productsService";
 
-export default function Products() {
+export function getStaticProps() {
+  const products = getAllProducts();
+
+  return {
+    props: { products },
+  };
+}
+
+export default function Products({ products }) {
   return (
     <>
       <Head>
@@ -10,16 +19,13 @@ export default function Products() {
       <h1>Produkte</h1>
       <p>Liste aller Produkte</p>
       <ul>
-        <li>
-          <Link href="/product/guppy">
-            <a>Guppy</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/product/regenbogenfisch">
-            <a>Regenbogenfisch</a>
-          </Link>
-        </li>
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link href={`/product/${product.id}`}>
+              <a>{product.name}</a>
+            </Link>
+          </li>
+        ))}
       </ul>
     </>
   );

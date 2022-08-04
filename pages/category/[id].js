@@ -1,19 +1,19 @@
-import Head from "next/head";
+import Head from 'next/head';
 import {
   getAllCategories,
   getCategoryById,
-} from "../../src/services/categoriesService";
+} from '../../src/services/categoriesService';
 
-export function getStaticPaths() {
-  const categories = getAllCategories();
+export async function getStaticPaths() {
+  const categories = await getAllCategories();
   return {
     paths: categories.map((category) => ({ params: { id: category.id } })),
     fallback: false,
   };
 }
 
-export function getStaticProps(context) {
-  const category = getCategoryById(context.params.id);
+export async function getStaticProps(context) {
+  const category = await getCategoryById(context.params.id);
   return {
     props: { category },
   };

@@ -1,9 +1,9 @@
-import Head from "next/head";
-import Link from "next/link";
-import { getAllCategories } from "../src/services/categoriesService";
+import Head from 'next/head';
+import Link from 'next/link';
+import { getAllCategories } from '../src/services/categoriesService';
 
-export function getStaticProps() {
-  const categories = getAllCategories();
+export async function getStaticProps() {
+  const categories = await getAllCategories();
 
   return {
     props: { categories },

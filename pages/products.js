@@ -1,9 +1,11 @@
-import Head from "next/head";
-import Link from "next/link";
-import { getAllProducts } from "../src/services/productsService";
+import Head from 'next/head';
+import Link from 'next/link';
+import { getAllProducts } from '../src/services/productsService';
 
-export function getStaticProps() {
-  const products = getAllProducts();
+export async function getStaticProps() {
+  const products = await getAllProducts();
+
+  console.log(products);
 
   return {
     props: { products },

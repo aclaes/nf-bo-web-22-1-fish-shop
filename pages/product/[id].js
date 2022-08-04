@@ -1,44 +1,49 @@
+import { useRouter } from 'next/router';
 import Head from 'next/head';
-import {
-  getAllProducts,
-  getProductById,
-} from '../../src/services/productsService';
+import ProductForm from '../../src/components/ProductForm';
+import { getAllCategories } from '../../src/services/categoriesService';
+import { getProductById } from '../../src/services/productsService';
+import { useFetch } from '../../src/hooks/useFetch';
 
-export async function getStaticPaths() {
-  const products = await getAllProducts();
-
-  return {
-    paths: products.map((product) => ({ params: { id: product.id } })),
-    fallback: false,
-  };
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
+  const categories = await getAllCategories();
   const product = await getProductById(context.params.id);
 
   return {
     props: {
       product,
+      categories,
     },
   };
 }
 
-export default function Product({ product }) {
-  const { id, name, description, price, category } = product;
+export default function Product({ product, categories }) {
+  const router = useRouter();
+  const fetchApi = useFetch();
+
+  async function handleSubmit(data) {
+    await fetchApi(`/api/product/${product.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    });
+
+    router.push('/products');
+  }
+
+  const { id, name } = product;
 
   return (
     <>
       <Head>
-        <title>Produkt: {name}</title>
+        <title>Produkt: {product.name}</title>
       </Head>
       <h1>Produkt: {name}</h1>
       <p>ID: {id}</p>
-      <h2>Beschreibung</h2>
-      <p>{description}</p>
-      <h2>Preis</h2>
-      <p>{price}</p>
-      <h2>Kategorie</h2>
-      <p>{category}</p>
+      <ProductForm
+        onSubmit={handleSubmit}
+        categories={categories}
+        product={product}
+      />
     </>
   );
 }

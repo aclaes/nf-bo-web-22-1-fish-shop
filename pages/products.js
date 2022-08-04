@@ -1,6 +1,6 @@
-import Head from 'next/head';
-import Link from 'next/link';
-import { getAllProducts } from '../src/services/productsService';
+import Head from "next/head";
+import Link from "next/link";
+import { getAllProducts } from "../src/services/productsService";
 
 export async function getStaticProps() {
   const products = await getAllProducts();
@@ -19,6 +19,9 @@ export default function Products({ products }) {
         <title>Alle Produkte</title>
       </Head>
       <h1>Produkte</h1>
+      <Link href="create-product">
+        <a>Neues Produkt</a>
+      </Link>
       <p>Liste aller Produkte</p>
       <ul>
         {products.map((product) => (

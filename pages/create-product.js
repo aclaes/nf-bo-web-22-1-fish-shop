@@ -1,7 +1,7 @@
-import { useRouter } from "next/router";
-import ProductForm from "../src/components/ProductForm";
-import { useFetch } from "../src/hooks/useFetch";
-import { getAllCategories } from "../src/services/categoriesService";
+import { useRouter } from 'next/router';
+import ProductForm from '../src/components/ProductForm';
+import { useFetch } from '../src/hooks/useFetch';
+import { getAllCategories } from '../src/services/categoriesService';
 
 export async function getServerSideProps() {
   const categories = await getAllCategories();
@@ -18,12 +18,12 @@ export default function CreateProduct({ categories }) {
   const fetchApi = useFetch();
 
   async function handleSubmit(data) {
-    await fetchApi("/api/product/create", {
-      method: "POST",
+    await fetchApi('/api/product/create', {
+      method: 'POST',
       body: JSON.stringify(data),
     });
 
-    router.push("/products");
+    router.push('/products');
   }
 
   return (

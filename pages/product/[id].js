@@ -30,6 +30,14 @@ export default function Product({ product, categories }) {
     router.push('/products');
   }
 
+  async function handleDelete() {
+    await fetchApi(`/api/product/${product.id}`, {
+      method: 'DELETE',
+    });
+
+    router.push('/products');
+  }
+
   const { id, name } = product;
 
   return (
@@ -44,6 +52,9 @@ export default function Product({ product, categories }) {
         categories={categories}
         product={product}
       />
+      <button type="button" onClick={handleDelete}>
+        Produkt löschen
+      </button>
     </>
   );
 }

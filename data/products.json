@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "626a48a8916f633a190f0251"
+  },
+  "name": "Garnele",
+  "description": "Lebt bevorzugt paarweise",
+  "price": 19,
+  "category": {
+    "$oid": "626a485c916f633a190f024c"
+  }
+},{
+  "_id": {
+    "$oid": "626a48ef916f633a190f0255"
+  },
+  "name": "Anemonenfisch",
+  "description": "Nemo",
+  "price": 60,
+  "category": {
+    "$oid": "626a47d8916f633a190f0246"
+  }
+},{
+  "_id": {
+    "$oid": "626a4929916f633a190f0258"
+  },
+  "name": "Pracht-Anemone",
+  "description": "Ist prächtig",
+  "price": 90,
+  "category": {
+    "$oid": "626a4835916f633a190f024a"
+  }
+},{
+  "_id": {
+    "$oid": "626a494c916f633a190f025b"
+  },
+  "name": "Mördermuschel",
+  "description": "Ist hübscher als ihr Name",
+  "price": 125,
+  "category": {
+    "$oid": "626a4811916f633a190f0248"
+  }
+},{
+  "_id": {
+    "$oid": "626a49ce916f633a190f025f"
+  },
+  "name": "Kaiserfisch",
+  "description": "Ein tagaktiver Einzelgänger",
+  "price": 90,
+  "category": {
+    "$oid": "626a47d8916f633a190f0246"
+  }
+},{
+  "_id": {
+    "$oid": "626a49f6916f633a190f0262"
+  },
+  "name": "Guppy",
+  "description": "Klein aber fein",
+  "price": 5,
+  "category": {
+    "$oid": "626a46ea916f633a190f0244"
+  }
+},{
+  "_id": {
+    "$oid": "626a4a1e916f633a190f0266"
+  },
+  "name": "Regenbogenfisch",
+  "description": "In allen Farben und bunt",
+  "price": 12,
+  "category": {
+    "$oid": "626a46ea916f633a190f0244"
+  }
+}]

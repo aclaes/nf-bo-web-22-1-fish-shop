@@ -4,7 +4,7 @@ export default function ProductForm({ categories, product, onSubmit }) {
   const [name, setName] = useState(product?.name ?? "");
   const [description, setDescription] = useState(product?.description ?? "");
   const [price, setPrice] = useState(product?.price ?? "");
-  const [category, setCategory] = useState(product?.categoryId ?? "");
+  const [category, setCategory] = useState(product?.categoryId ?? categories[0].id);
 
   function handleSubmit(event) {
     event.preventDefault();

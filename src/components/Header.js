@@ -1,6 +1,7 @@
 import StyledHeader from './ui/StyledHeader';
 import StyledNavigation from './ui/StyledNavigation';
 import Link from 'next/link';
+import LoginButton from './LoginButton';
 
 export default function Header() {
   return (
@@ -16,6 +17,7 @@ export default function Header() {
           <a>Kategorien</a>
         </Link>
       </StyledNavigation>
+      <LoginButton />
     </StyledHeader>
   );
 }
